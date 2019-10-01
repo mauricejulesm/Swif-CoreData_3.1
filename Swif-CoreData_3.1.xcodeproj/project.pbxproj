@@ -14,6 +14,9 @@
 		516E372D23436DE7006FC27C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516E372B23436DE7006FC27C /* LaunchScreen.storyboard */; };
 		516E373523437A3C006FC27C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516E373423437A3C006FC27C /* DetailViewController.swift */; };
 		516E373823437FDC006FC27C /* Project38.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 516E373623437FDC006FC27C /* Project38.xcdatamodeld */; };
+		D20EF9682343B9BF00AD0E4A /* Commit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EF9662343B9BF00AD0E4A /* Commit+CoreDataClass.swift */; };
+		D20EF9692343B9BF00AD0E4A /* Commit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EF9672343B9BF00AD0E4A /* Commit+CoreDataProperties.swift */; };
+		D20EF96D2343D00B00AD0E4A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EF96C2343D00B00AD0E4A /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		516E372E23436DE7006FC27C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		516E373423437A3C006FC27C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		516E373723437FDC006FC27C /* Project38.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Project38.xcdatamodel; sourceTree = "<group>"; };
+		D20EF9662343B9BF00AD0E4A /* Commit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Commit+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D20EF9672343B9BF00AD0E4A /* Commit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Commit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D20EF96C2343D00B00AD0E4A /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +64,51 @@
 		516E372123436DE5006FC27C /* Swif-CoreData_3.1 */ = {
 			isa = PBXGroup;
 			children = (
+				D20EF9652343B9A400AD0E4A /* MODEL */,
+				D20EF96F2343D24400AD0E4A /* VIEWS */,
+				D20EF9702343D24F00AD0E4A /* VIEWMODEL */,
+				D20EF96E2343D1EE00AD0E4A /* LIBRARIES */,
 				516E372223436DE5006FC27C /* AppDelegate.swift */,
-				516E372423436DE5006FC27C /* ViewController.swift */,
-				516E372623436DE5006FC27C /* Main.storyboard */,
 				516E372923436DE7006FC27C /* Assets.xcassets */,
-				516E372B23436DE7006FC27C /* LaunchScreen.storyboard */,
 				516E372E23436DE7006FC27C /* Info.plist */,
-				516E373423437A3C006FC27C /* DetailViewController.swift */,
 				516E373623437FDC006FC27C /* Project38.xcdatamodeld */,
 			);
 			path = "Swif-CoreData_3.1";
+			sourceTree = "<group>";
+		};
+		D20EF9652343B9A400AD0E4A /* MODEL */ = {
+			isa = PBXGroup;
+			children = (
+				D20EF9662343B9BF00AD0E4A /* Commit+CoreDataClass.swift */,
+				D20EF9672343B9BF00AD0E4A /* Commit+CoreDataProperties.swift */,
+			);
+			path = MODEL;
+			sourceTree = "<group>";
+		};
+		D20EF96E2343D1EE00AD0E4A /* LIBRARIES */ = {
+			isa = PBXGroup;
+			children = (
+				D20EF96C2343D00B00AD0E4A /* SwiftyJSON.swift */,
+			);
+			path = LIBRARIES;
+			sourceTree = "<group>";
+		};
+		D20EF96F2343D24400AD0E4A /* VIEWS */ = {
+			isa = PBXGroup;
+			children = (
+				516E373423437A3C006FC27C /* DetailViewController.swift */,
+				516E372423436DE5006FC27C /* ViewController.swift */,
+				516E372623436DE5006FC27C /* Main.storyboard */,
+				516E372B23436DE7006FC27C /* LaunchScreen.storyboard */,
+			);
+			path = VIEWS;
+			sourceTree = "<group>";
+		};
+		D20EF9702343D24F00AD0E4A /* VIEWMODEL */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VIEWMODEL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,7 +184,10 @@
 			files = (
 				516E373823437FDC006FC27C /* Project38.xcdatamodeld in Sources */,
 				516E373523437A3C006FC27C /* DetailViewController.swift in Sources */,
+				D20EF96D2343D00B00AD0E4A /* SwiftyJSON.swift in Sources */,
+				D20EF9682343B9BF00AD0E4A /* Commit+CoreDataClass.swift in Sources */,
 				516E372523436DE5006FC27C /* ViewController.swift in Sources */,
+				D20EF9692343B9BF00AD0E4A /* Commit+CoreDataProperties.swift in Sources */,
 				516E372323436DE5006FC27C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
