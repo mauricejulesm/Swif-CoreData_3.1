@@ -13,21 +13,29 @@ class ViewController: UITableViewController {
 
 	var commits = [Commit]()
     var container: NSPersistentContainer!
+    var commitPredicate: NSPredicate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.title = "Listing All Commits"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(changeFilter))
         
         // initializing the persistent containter
         container = NSPersistentContainer(name: "Project38")
         
         container.loadPersistentStores { storeDescription, error in
+            self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+            
             if let error = error {
                 print("Unresolved error \(error)")
             }
         }
+        
 		performSelector(inBackground: #selector(fetchCommits), with: nil)
 		loadSavedData()
+        
+        // get the app dir
+        //applicationDocumentsDirectory()
     }
 	
 	
@@ -54,7 +62,8 @@ class ViewController: UITableViewController {
 		let request = Commit.createFetchRequest()
 		let sort = NSSortDescriptor(key: "date", ascending: false)
 		request.sortDescriptors = [sort]
-		
+        request.predicate = commitPredicate
+
 		do {
 			commits = try container.viewContext.fetch(request)
 			print("Got \(commits.count) commits")
@@ -75,7 +84,8 @@ class ViewController: UITableViewController {
     }
 	
 	@objc func fetchCommits() {
-		if let data = try? String(contentsOf: URL(string: "https://api.github.com/repos/apple/swift/commits?per_page=100")!) {
+        let apiUrl = "ttps://api.github.com/repos/apple/swift/commits?per_page=100"
+		if let data = try? String(contentsOf: URL(string: apiUrl)!) {
 			// give the data to SwiftyJSON to parse
 			let jsonCommits = JSON(parseJSON: data)
 			
@@ -105,7 +115,41 @@ class ViewController: UITableViewController {
 		let formatter = ISO8601DateFormatter()
 		commit.date = formatter.date(from: json["commit"]["committer"]["date"].stringValue) ?? Date()
 	}
+    
+    //commits filter function
+    @objc func changeFilter (){
+    let ac = UIAlertController(title: "Filter commits…", message: nil, preferredStyle: .actionSheet)
+    
+    ac.addAction(UIAlertAction(title: "Show only fixes", style: .default) { [unowned self] _ in
+        self.commitPredicate = NSPredicate(format: "message CONTAINS[c] 'fix'")
+        self.loadSavedData()
+        self.title = " Show Only fixes"
+    })
+    ac.addAction(UIAlertAction(title: "Ignore Pull Requests", style: .default) { [unowned self] _ in
+        self.commitPredicate = NSPredicate(format: "NOT message BEGINSWITH 'Merge pull request'")
+        self.title = "Ignored PullRequests"
+        self.loadSavedData()
+    })
+    ac.addAction(UIAlertAction(title: "Show only recent", style: .default) { [unowned self] _ in
+        let twelveHoursAgo = Date().addingTimeInterval(-43200)
+        self.commitPredicate = NSPredicate(format: "date > %@", twelveHoursAgo as NSDate)
+        self.title = "Recent Commits"
+        self.loadSavedData()
+    })
+    ac.addAction(UIAlertAction(title: "Show all commits", style: .default) { [unowned self] _ in
+        self.commitPredicate = nil
+        self.loadSavedData()
+    })
+    ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+    present(ac, animated: true)
+    }
 
-
+    // getting the file path of the sqlite file
+    func applicationDocumentsDirectory() {
+        if let url = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).last {
+            print(url.absoluteString)
+        }
+    }
+    
 }
 
