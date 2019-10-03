@@ -53,8 +53,8 @@ class ViewController: UITableViewController {
 		
 		let commit = commits[indexPath.row]
 		cell.textLabel!.text = commit.message
-		cell.detailTextLabel!.text = commit.date.description
-		
+        cell.detailTextLabel!.text = "By \(commit.author.name) on \(commit.date.description)"
+
 		return cell
 	}
 	
@@ -84,7 +84,7 @@ class ViewController: UITableViewController {
     }
 	
 	@objc func fetchCommits() {
-        let apiUrl = "ttps://api.github.com/repos/apple/swift/commits?per_page=100"
+        let apiUrl = "https://api.github.com/repos/apple/swift/commits?per_page=100"
 		if let data = try? String(contentsOf: URL(string: apiUrl)!) {
 			// give the data to SwiftyJSON to parse
 			let jsonCommits = JSON(parseJSON: data)
@@ -113,7 +113,33 @@ class ViewController: UITableViewController {
 		commit.url = json["html_url"].stringValue
 		
 		let formatter = ISO8601DateFormatter()
-		commit.date = formatter.date(from: json["commit"]["committer"]["date"].stringValue) ?? Date()
+        commit.date = formatter.date(from: json["commit"]["committer"]["date"].stringValue)! as NSDate
+        
+        
+        var commitAuthor: Author!
+        
+        // see if this author exists already
+        let authorRequest = Author.createFetchRequest()
+        authorRequest.predicate = NSPredicate(format: "name == %@", json["commit"]["committer"]["name"].stringValue)
+        
+        if let authors = try? container.viewContext.fetch(authorRequest) {
+            if authors.count > 0 {
+                // we have this author already
+                commitAuthor = authors[0]
+            }
+        }
+        
+        if commitAuthor == nil {
+            // we didn't find a saved author - create a new one!
+            let author = Author(context: container.viewContext)
+            author.name = json["commit"]["committer"]["name"].stringValue
+            author.email = json["commit"]["committer"]["email"].stringValue
+            commitAuthor = author
+        }
+        
+        // use the author, either saved or new
+        commit.author = commitAuthor
+        
 	}
     
     //commits filter function

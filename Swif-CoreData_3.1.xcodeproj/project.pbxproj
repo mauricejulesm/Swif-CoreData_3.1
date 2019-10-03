@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51168BFD2345E11F0012BCC9 /* Author+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51168BFB2345E11F0012BCC9 /* Author+CoreDataClass.swift */; };
+		51168BFE2345E11F0012BCC9 /* Author+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51168BFC2345E11F0012BCC9 /* Author+CoreDataProperties.swift */; };
 		516E372323436DE5006FC27C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516E372223436DE5006FC27C /* AppDelegate.swift */; };
 		516E372523436DE5006FC27C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516E372423436DE5006FC27C /* ViewController.swift */; };
 		516E372823436DE5006FC27C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516E372623436DE5006FC27C /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		51168BFB2345E11F0012BCC9 /* Author+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Author+CoreDataClass.swift"; sourceTree = "<group>"; };
+		51168BFC2345E11F0012BCC9 /* Author+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Author+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		516E371F23436DE5006FC27C /* Swif-CoreData_3.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swif-CoreData_3.1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		516E372223436DE5006FC27C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		516E372423436DE5006FC27C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +83,8 @@
 		D20EF9652343B9A400AD0E4A /* MODEL */ = {
 			isa = PBXGroup;
 			children = (
+				51168BFB2345E11F0012BCC9 /* Author+CoreDataClass.swift */,
+				51168BFC2345E11F0012BCC9 /* Author+CoreDataProperties.swift */,
 				D20EF9662343B9BF00AD0E4A /* Commit+CoreDataClass.swift */,
 				D20EF9672343B9BF00AD0E4A /* Commit+CoreDataProperties.swift */,
 			);
@@ -184,8 +190,10 @@
 			files = (
 				516E373823437FDC006FC27C /* Project38.xcdatamodeld in Sources */,
 				516E373523437A3C006FC27C /* DetailViewController.swift in Sources */,
+				51168BFE2345E11F0012BCC9 /* Author+CoreDataProperties.swift in Sources */,
 				D20EF96D2343D00B00AD0E4A /* SwiftyJSON.swift in Sources */,
 				D20EF9682343B9BF00AD0E4A /* Commit+CoreDataClass.swift in Sources */,
+				51168BFD2345E11F0012BCC9 /* Author+CoreDataClass.swift in Sources */,
 				516E372523436DE5006FC27C /* ViewController.swift in Sources */,
 				D20EF9692343B9BF00AD0E4A /* Commit+CoreDataProperties.swift in Sources */,
 				516E372323436DE5006FC27C /* AppDelegate.swift in Sources */,
